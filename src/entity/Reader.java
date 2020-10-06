@@ -11,11 +11,16 @@ package entity;
  */
 public class Reader {
     private String name;
-    private String number;
+    private String lastname;
+    private String phone;
 
-    public Reader(String name, String number) {
+    public Reader() {
+    }
+
+    public Reader(String name, String lastname, String phone) {
         this.name = name;
-        this.number = number;
+        this.lastname = lastname;
+        this.phone = phone;
     }
 
     public String getName() {
@@ -26,20 +31,32 @@ public class Reader {
         this.name = name;
     }
 
-    public String getNumber() {
-        return number;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     @Override
     public String toString() {
-        return "Reader{" + "name=" + name + ", number=" + number + '}';
+        return "Reader{" 
+                + "name=" + name 
+                + ", lastname=" + lastname 
+                + ", phone=" + phone 
+                + '}';
     }
-    
-    
+      
+            
 }
 
 
