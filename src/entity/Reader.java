@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 package entity;
-
+import java.io.Serializable;
 /**
  *
  * @author Comp
  */
-public class Reader {
+public class Reader implements Serializable{
     private String name;
     private String lastname;
     private String phone;
