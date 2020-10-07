@@ -15,6 +15,7 @@ import java.util.Scanner;
  */
 class App {
     private Book[] books = new Book[100];
+    private Reader[] readers = new Reader[100];
     
     public void run(){
         System.out.println("--- Библиотека ---");
@@ -26,7 +27,6 @@ class App {
             System.out.println("2. Посмотреть список книг");
             System.out.println("3. Зарегистрировать нового читателя");
             System.out.println("4. Список читателей");
-            
             System.out.println("5. Выдать книгу читателю");
             System.out.println("6. Вернуть книгу в библиотеку");
             System.out.print("Выберите задачу: ");
@@ -39,7 +39,6 @@ class App {
                     break;
                 case "1":
                     System.out.println("---- Добавить новую книгу ----");
-                    // создадим объект книги
                     Book book = new Book("Voina i Mir", "L.Tolstoy", 2010);
                     books[0] = book;
                     Book book1 = new Book("Otsi i deti", "I.Turgenjev", 2011);
@@ -61,14 +60,27 @@ class App {
                     break;
                 case "3":
                     System.out.println("--- Зарегистрировать нового читателя ---");
-                    Reader reader = new Reader("Maksim", "Kolesnikov", "56565656");
+                    Reader reader = new Reader("Martin", "Tamm", "56565656");
+                    Reader reader1 = new Reader("Nikolay", "Petrov","54455445");
+                    readers[0]=reader;
+                    readers[1]=reader1;
+                    
                     System.out.printf("Новый пользователь: %s %s%n", 
                                 reader.getName(),
                                 reader.getLastname()
                            );
+                    System.out.printf("Новый пользователь: %s %s%n", 
+                                reader1.getName(),
+                                reader1.getLastname()
+                           );
                     break;
                 case "4":
-                    System.out.println("");
+                    System.out.println("---Список читателей---");
+                    for (int i = 0; i < readers.length; i++) {
+                        if (readers[i] != null) {
+                            System.out.printf("%d. %s%n",i+1,readers[i].toString());
+                        }
+                    }
                     break;
                 case "5":
                     System.out.println("");
