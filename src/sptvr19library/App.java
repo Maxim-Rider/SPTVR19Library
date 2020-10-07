@@ -9,6 +9,7 @@ import entity.Reader;
 import entity.Book;
 import java.util.Scanner;
 import tools.BookFactory;
+import tools.BookSaver;
 /**
  *
  * @author Comp
@@ -16,6 +17,11 @@ import tools.BookFactory;
 class App {
     private Book[] books = new Book[100];
     private Reader[] readers = new Reader[100];
+    
+    public App() {
+        BookSaver bookSaver = new BookSaver();
+        books = bookSaver.loadFile();
+    }
     
     public void run(){
         System.out.println("--- Библиотека ---");
@@ -40,10 +46,6 @@ class App {
                 case "1":
                     System.out.println("---- Добавить новую книгу ----");
                     Book book;
-                 //   Book book = new Book("Voina i Mir", "L.Tolstoy", 2010);
-                  //  books[0] = book;
-                   // Book book1 = new Book("Otsi i deti", "I.Turgenjev", 2011);
-                   // books[1] = book1;
                     BookFactory bookFactory = new BookFactory();
                     book = bookFactory.createBook();
                     for (int i = 0; i < books.length; i++) {
@@ -52,6 +54,8 @@ class App {
                             break;
                         }
                     }
+                    BookSaver bookSaver = new BookSaver();
+                    bookSaver.saveBooks(books);
                 case "2":
                     System.out.println("--- Cписок книг ---");
                     for (int i = 0; i < books.length; i++) {
@@ -61,8 +65,7 @@ class App {
                                     ,books[i].getName()
                                     ,books[i].getAuthor()
                             );
-                            System.out.println("--------------------------------");
-                            
+                            System.out.println("--------------------------------"); 
                         }
                     }
                     break;
