@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author user
+ * @author Comp
  */
 public class BookSaver {
     private String fileName = "books";

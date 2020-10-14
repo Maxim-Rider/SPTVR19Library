@@ -1,16 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sptvr19library;
 
 
+import security.SecureManager;
 import entity.Reader;
 import entity.Book;
 import entity.History;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import entity.User;
 import java.util.Scanner;
 import tools.managers.BookManager;
 import tools.severs.BookSaver;
@@ -18,19 +13,22 @@ import tools.managers.HistoryManager;
 import tools.severs.HistorySaver;
 import tools.managers.ReaderManager;
 import tools.severs.ReaderSaver;
+import tools.severs.UserSaver;
 
 /**
  *
- * @author Comp
+ * @author sillamae kutsekool
  */
 class App {
     private Book[] books = new Book[100];
     private Reader[] readers = new Reader[100];
     private History[] histories = new History[100];
+    private User[] users = new User[100];
     private ReaderManager readerManager = new ReaderManager();
     private BookManager bookManager = new BookManager();
     private HistoryManager historyManager = new HistoryManager();
-
+    private SecureManager secureManager = new SecureManager();
+    private User loginedUser;
     public App() {
         BookSaver bookSaver = new BookSaver();
         books = bookSaver.loadFile();
@@ -38,10 +36,13 @@ class App {
         readers = readerSaver.loadFile();
         HistorySaver historySaver = new HistorySaver();
         histories = historySaver.loadFile();
+        UserSaver userSaver = new UserSaver();
+        users = userSaver.loadFile();
     }
     
     public void run(){
         System.out.println("--- Библиотека ---");
+        this.loginedUser = secureManager.checkTask(users, readers);
         boolean repeat = true;
         do{
             System.out.println("Список задач: ");

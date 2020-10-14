@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author user
+ * @author Comp
  */
 public class BookManager {
     public Book createBook() {

@@ -15,7 +15,7 @@ import java.io.ObjectOutputStream;
 
 /**
  *
- * @author user
+ * @author Comp
  */
 public class HistorySaver {
     private String fileName = "histories";
