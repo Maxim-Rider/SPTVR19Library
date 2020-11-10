@@ -20,6 +20,9 @@ import tools.severs.UserSaver;
  * @author sillamae kutsekool
  */
 class App {
+    public static final String STANDART = "\u001B[0m";
+    public static final String PURPLE = "\u001B[35m";
+
     private Book[] books = new Book[100];
     private Reader[] readers = new Reader[100];
     private History[] histories = new History[100];
@@ -41,7 +44,7 @@ class App {
     }
     
     public void run(){
-        System.out.println("--- Библиотека ---");
+        System.out.println(PURPLE + "--- Библиотека ---" + STANDART);
         this.loginedUser = secureManager.checkTask(users, readers);
         boolean repeat = true;
         do{
