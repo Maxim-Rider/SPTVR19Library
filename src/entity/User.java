@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 /**
  *
  * @author Comp
@@ -17,8 +18,10 @@ import javax.persistence.Id;
 public class User implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String login;
     private String password;
+    @OneToOne
     private Reader reader;
 
     
@@ -63,6 +66,14 @@ public class User implements Serializable{
                 + ", reader=" + reader.getName()
                 + " " + reader.getLastname()
                 + '}';
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
     
     

@@ -2,6 +2,7 @@ package tools.managers;
 
 import entity.Book;
 import java.util.Scanner;
+import java.util.List;
 
 /**
  *
@@ -20,22 +21,17 @@ public class BookManager {
         book.setPublishedYear(scanner.nextInt());
         return book;
     }
-    public void addBookToArray(Book book, Book[] books){
-        for (int i = 0; i < books.length; i++) {
-            if(books[i] == null){
-                books[i]=book;
-                break;
-            }
-        }
+    public void addBookToArray(Book book, List<Book> books){
+        books.add(book);
     }
 
-    public void printListBooks(Book[] books) {
-        for (int i = 0; i < books.length; i++) {
-            if(books[i]!= null){
+    public void printListBooks(List<Book> books) {
+        for (int i = 0; i < books.size(); i++) {
+            if(books.get(i)!= null){
                 System.out.printf("%3d. Название книги: %s%nАвтор: %s%n"
                         ,i+1
-                        ,books[i].getName()
-                        ,books[i].getAuthor()
+                        ,books.get(i).getName()
+                        ,books.get(i).getAuthor()
                 );
                 System.out.println("--------------------------------");
             }
